@@ -25,62 +25,53 @@ public class PatientController {
     	return patientRespository.findById(pID);
     }
     
-//    @Autowired
-//    ItemsRepository itemsRespository;
-//
-//
-//    @GetMapping("/AllItems")
-//    public List<Items> findAllItems()
-//    {
-//    	return itemsRespository.findAllItems();
-//    }
-//    
-//    @GetMapping("/AccountItems")
-//    public List<Items> findAllAccountItems()
-//    {
-//    	return itemsRespository.findAllAccountItems();
-//    }
+  @PutMapping("/Patients/{id}")
+  public Patient update(@PathVariable String id, @RequestBody Map<String, String> body){
+      	int patientId = Integer.parseInt(id);
+      	Patient patient = patientRespository.findOne(patientId);
+      	patient.setPatientId(Integer.parseInt(body.get("PatientID")));
+	  	patient.setPatientRef(body.get("PatientRef"));
+	  	patient.setPatientType(body.get("PatientType"));
+	  	patient.setCompanyName(body.get("Companyname"));
+	  	patient.setPosition(body.get("Position"));
+	  	patient.setFirstName(body.get("FirstName"));
+	  	patient.setMiddleName(body.get("MiddleName"));
+	  	patient.setLastName(body.get("LastName"));
+	  	patient.setAddress(body.get("Address"));
+	  	patient.setBirthdate(body.get("BirthDate"));
+	  	patient.setEmail(body.get("Email"));
+	  	patient.setAge(body.get("Age"));
+	  	patient.setContactNo(body.get("ContactNo"));
+	  	patient.setPatientBiller(body.get("PatientBiller"));
+	  	patient.setNotes(body.get("Notes"));
+	  	patient.setSid(body.get("SID"));
+	  	patient.setCreationDate(body.get("CreationDate"));
+	  	patient.setDateUpdate(body.get("DateUpdate"));
+	  	return patientRespository.save(patient);
+  }
     
-//    @GetMapping("/All")
-//    public List<Cashier> findAll()
-//    {
-//    	return cashierRespository.findAll();
-//    }
-    
-//    @GetMapping("/blog")
-//    public List<Cashier> index(){
-//        return cashierRespository.findAll();
-//    }
-//
-//    @GetMapping("/blog/{id}")
-//    public Cashier show(@PathVariable String id){
-//        int blogId = Integer.parseInt(id);
-//        return cashierRespository.findOne(blogId);
-//    }
-//
-//    @PostMapping("/blog")
-//    public Cashier create(@RequestBody Map<String, String> body){
-//        String title = body.get("TransactionType");
-//        String content = body.get("PatientID");
-//        return cashierRespository.save(new Cashier(title, content));
-//    }
-//
-//    @PutMapping("/blog/{id}")
-//    public Cashier update(@PathVariable String id, @RequestBody Map<String, String> body){
-//        int blogId = Integer.parseInt(id);
-//        // getting blog
-//        Cashier blog = cashierRespository.findOne(blogId);
-//        //blog.setAsd(body.get("TransactionType"));
-//        //blog.setContent(body.get("PatientID"));
-//        return cashierRespository.save(blog);
-//    }
-//
-//    @DeleteMapping("blog/{id}")
-//    public boolean delete(@PathVariable String id){
-//        int blogId = Integer.parseInt(id);
-//        cashierRespository.delete(blogId);
-//        return true;
-//    }
+    @PostMapping("/Patients")
+    	public Patient create(@RequestBody Map<String, String> body){
+    	int patientId = Integer.parseInt(body.get("PatientID"));
+    	String patientRef = body.get("PatientRef");
+    	String patientType = body.get("PatientType");
+    	String companyName = body.get("Companyname");
+    	String position = body.get("Position");
+    	String firstName = body.get("FirstName");
+    	String middleName = body.get("MiddleName");
+    	String lastName = body.get("LastName");
+    	String address = body.get("Address");
+    	String birthDate = body.get("BirthDate");
+    	String email = body.get("Email");
+    	String age = body.get("Age");
+    	String contactNo = body.get("ContactNo");
+    	String patientBiller = body.get("PatientBiller");
+    	String notes = body.get("Notes");
+    	String sid = body.get("SID");
+    	String creationDate = body.get("CreationDate");
+    	String dateUpdate = body.get("DateUpdate");
+    	return patientRespository.save(new Patient(patientId, patientRef, patientType, companyName, position, firstName, middleName, lastName, address, birthDate, email, age, contactNo, patientBiller, notes, sid, creationDate, dateUpdate));
+    }
 
 
 }

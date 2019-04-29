@@ -23,8 +23,8 @@ public class Patient {
     private String firstName;
     @Column(name="MiddleName")
     private String middleName;
-    @Column(name="fullname")
-    private String fullname;
+//    @Column(name="fullname")
+//    private String fullname;
 	@Column(name="Address")
     private String address;
 	@Column(name="Birthdate")
@@ -47,6 +47,32 @@ public class Patient {
     private String creationDate;
 	@Column(name="DateUpdate")
     private String dateUpdate;
+	
+	public Patient() {  }
+
+    public Patient(int patientID, String patientRef, String patientType, String companyName, String position, String firstName, String middleName, String lastName, String address, String birthDate, String mail, String age, String contactNo, String patientBiller, String notes, String sid, String creationDate, String dateUpdate)
+    {
+    	this.setPatientId(patientID);
+        this.setPatientRef(patientRef);
+        this.setPatientType(patientType);
+        this.setCompanyName(companyName);
+        this.setPosition(position);
+        this.setFirstName(firstName);
+        this.setLastName(lastName);
+        this.setMiddleName(middleName);
+       // this.setFullname(lastName + ", " + firstName + " " + middleName);
+        this.setAddress(address);
+        this.setBirthdate(birthdate);
+        this.setEmail(email);
+        this.setAge(age);
+        this.setGender(gender);
+        this.setContactNo(contactNo);
+        this.setPatientBiller(patientBiller);
+        this.setNotes(notes);
+        this.setSid(sid);
+        this.setCreationDate(creationDate);
+        this.setDateUpdate(dateUpdate);
+    }
 	
     public int getPatientId() {
 		return patientId;
@@ -96,12 +122,12 @@ public class Patient {
 	public void setMiddleName(String middleName) {
 		this.middleName = middleName;
 	}
-	public String getFullname() {
-		return fullname;
-	}
-	public void setFullname(String fullname) {
-		this.fullname = fullname;
-	}
+//	public String getFullname() {
+//		return fullname;
+//	}
+//	public void setFullname(String fullname) {
+//		this.fullname = fullname;
+//	}
 	public String getAddress() {
 		return address;
 	}
